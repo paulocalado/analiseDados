@@ -1,0 +1,10 @@
+nflData <- read.csv("/Users/paulocalado/Documents/UFRPE/analiseDados/pbp_2017_huge.csv",header = T,stringsAsFactors = F)
+nflData[2,'time']
+eaglesOffense <- subset(nflData, posteam == 'PHI' & DefensiveTeam == 'NYG')
+brownsOffense <- subset(nflData, posteam == 'CLE')
+eaglesDeffense <- subset(nflData, DefensiveTeam == 'PHI')
+steelersOffense <- subset(nflData, posteam == "PIT")
+eaglesNegativePlays<- subset(eaglesOffense, eaglesOffense$Yards.Gained<0)
+barplot(eaglesNegativePlays$PlayType)
+counts<-table(eaglesDeffense$Yards.Gained <3)
+barplot(counts)

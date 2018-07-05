@@ -1,0 +1,8 @@
+nflData2009 <- read.csv("/Users/paulocalado/Documents/UFRPE/analiseDados/pbp_2009.csv",header = T,stringsAsFactors = F)
+nflPass2009<- subset(nflData2009, PassAttempt == 1)
+nflRush2009<- subset(nflData2009, RushAttempt == 1)
+nrow(nflRush2009)/nrow(nflData2009)
+saintsOffense09 <- subset(nflData, posteam == 'NO' )
+countsSaints<- table(saintsOffense09$PassOutcome)
+countsSaints<-table(saintsOffense09$Yards.Gained <3)
+barplot(countsSaints)
