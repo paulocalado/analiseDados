@@ -44,16 +44,16 @@ QBCompletePassBySide<- as.matrix(nflData%>%
                     group_by(Passer) %>%
   filter((PlayType == "Pass")&(Passer=="D.Brees"|Passer=="J.Winston"|Passer=="M.Ryan"|Passer=="C.Newton")) %>%
   summarise(
-    MiddleComplete = sum(PassOutcome=="Complete"&PassLocation=="middle",na.rm = T),
-    RightComplete = sum(PassOutcome=="Complete"&PassLocation=="right",na.rm = T),
-    LeftComplete = sum(PassOutcome=="Complete"&PassLocation=="left",na.rm = T)
+    MiddleComplete = (sum(PassOutcome=="Complete"&PassLocation=="middle",na.rm = T)/sum(PassOutcome=="Complete"))*100,
+    RightComplete = (sum(PassOutcome=="Complete"&PassLocation=="right",na.rm = T)/sum(PassOutcome=="Complete"))*100,
+    LeftComplete = (sum(PassOutcome=="Complete"&PassLocation=="left",na.rm = T)/sum(PassOutcome=="Complete"))*100
   ))
 
 NFCsouthColors <- c("#0085CA","#D3BC8D","#3D3935","#A71930")
 completePassesBySide<- matrix(as.numeric(QBCompletePassBySide[,2:4]),nrow=4,ncol=3)
 barplot(completePassesBySide,main="Passes Completos por lado do campo",
-        names.arg = c("Middle","Right","Left"),ylab = "Number of Complete Passes",cex.main=0.7,
-        xlab = "Side of the Field",col=NFCsouthColors,beside = T)
+        names.arg = c("Meio","Direita","Esquerda"),ylab = "Porcentagem de Passes Completos %",cex.main=0.7,
+        xlab = "Direcao do Passe",col=NFCsouthColors,beside = T,ylim = c(0,50))
 legend("topleft",pch = c(15,15,15,15),col =NFCsouthColors,legend = QBCompletePassBySide[,1] )
 
 
@@ -79,7 +79,7 @@ PanthersMeanYardsByQuarter<- panthersOffenseData%>%
   )
 
 plot(BucsMeanYardsByQuarter,type="o",main="Media de Jardas por Periodo",xaxt="n",col = NFCsouthColors[3],ylim=c(3.5,6.5),
-     ylab="Media de Jardas por Jogada",xlab='Periodo')
+     ylab="Media de Jardas por Jogada",xlab='Periodo',bty="n")
 lines(SaintsMeanYardsByQuarter[1:4,],type = "o",col = NFCsouthColors[2])
 lines(FalconsMeanYardsByQuarter,type = "o",col = NFCsouthColors[4])
 lines(PanthersMeanYardsByQuarter,type = "o", col = NFCsouthColors[1])
