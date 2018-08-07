@@ -9,7 +9,7 @@ saintsOffenseData <- nflData[nflData$posteam == "NO",]
 brownsOffenseData <- nflData[nflData$posteam == "CLE", ]
 
 buccaneersOfffenseData <- nflData[nflData$posteam == "TB",]
-View(nflData$posteam == "PHI")
+View(buccaneersOfffenseData)
 
 nflData$Yards.Gained
 
@@ -78,13 +78,13 @@ PanthersMeanYardsByQuarter<- panthersOffenseData%>%
     meanYards = mean(Yards.Gained)
   )
 
-plot(BucsMeanYardsByQuarter,type="o",main="Media de Jardas por Periodo",xaxt="n",col = NFCsouthColors[3],ylim=c(3.5,6.5),
+plot(BucsMeanYardsByQuarter,type="o",main="Media de Jardas por Periodo",xaxt="n",col = NFCsouthColors[4],ylim=c(3.5,6.5),
      ylab="Media de Jardas por Jogada",xlab='Periodo',bty="n")
-lines(SaintsMeanYardsByQuarter[1:4,],type = "o",col = NFCsouthColors[2])
-lines(FalconsMeanYardsByQuarter,type = "o",col = NFCsouthColors[4])
-lines(PanthersMeanYardsByQuarter,type = "o", col = NFCsouthColors[1])
+lines(SaintsMeanYardsByQuarter[1:4,],type = "o",col = NFCsouthColors[3])
+lines(FalconsMeanYardsByQuarter,type = "o",col = NFCsouthColors[1])
+lines(PanthersMeanYardsByQuarter,type = "o", col = NFCsouthColors[2])
 axis(1,at=c(1,2,3,4),labels = c(1,2,3,4))
-legend("bottomleft",pch = c(1,1,1,1),col= NFCsouthColors, legend=c("CAR","NO","TB","ATL"))
+legend("bottomleft",pch = c(1,1,1,1),col= NFCsouthColors, legend=c("ATL","CAR","NO","TB"))
 
 
 InterceptionBySide<-  as.matrix(nflData%>% 
