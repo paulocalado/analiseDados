@@ -181,8 +181,12 @@ cor.test(formula = ~Win_Prob + ScoreDiff,
 
 modelBucs<- lm(Win_Prob ~ ScoreDiff,
                data = fullBucsOffense)
+
 plot(Win_Prob ~ ScoreDiff,
      pch = 16,
+     main = "Linha de regressao",
+     xlab = "Diferenca Pontuacao",
+     ylab = "Probabilidade de Vitoria",
      data = fullBucsOffense)
 abline(modelBucs,col="red")
 
